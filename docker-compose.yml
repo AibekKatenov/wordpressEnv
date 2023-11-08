@@ -1,4 +1,4 @@
-version: '1.0'
+version: '3.0'
 services:
   db:
     container_name: 'local-wordpress-db'
@@ -22,7 +22,7 @@ services:
       - db
     image: 'wordpress:latest'
     ports:
-      - '80:80'
+      - '4002:80'
     environment:
       WORDPRESS_DB_HOST: 'db:3306'
       WORDPRESS_DB_USER: guider_user
@@ -36,6 +36,7 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: 'phpmyadmin'
+    restart: always
     links:
       - db
     ports:
